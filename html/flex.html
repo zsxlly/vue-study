@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            width: 90%;
+            height: 900px;
+            background-color: pink;
+            /* flex-direction属性确定主轴方向
+            默认从左到右 row
+            从右到左 row-reverse
+            从上到下 column
+            从下到上 column-reverse */
+            flex-direction: row;
+           /*  
+           justify-content属性定义了项目在主轴上对齐方式
+           默认值从头部开始，如果主轴是Y轴，从上到下
+           justify-content: flex-start;
+           从尾部开始排列
+            justify-content: flex-end;
+            在主轴居中对齐
+            justify-content: center;
+            平分剩余空间
+            justify-content: space-around;
+
+            **先两边贴边，再平分剩余空间
+            justify-content: space-between; */
+        }
+        span{
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件之间传值</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{fmessage}}</div>
+        <menu-item menu-Title='来自父组件的值'></menu-item><!-- 模板中使用短横线的形式props属性名 -->
+    </div>
+</body>
+<script>
+    Vue.component('menu-item', {
+        props:['menuTitle'],//props使用驼峰形式
+        data:function() {
+            return {
+                message:'子组件本来的数据'
+            }
+        },
+        template:`<div>{{message+"-------"+menuTitle}}</div>`
+    });
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            fmessage:'父组件内容',
+            ptitle: '动态绑定属性'
+        }
+    });
+</script>
+</html>

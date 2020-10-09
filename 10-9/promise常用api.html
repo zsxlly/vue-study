@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <script>
+            function foo(){
+                return new Promise(function(resolve,reject){
+                    setTimeout(function(){
+                        // resolve(123);
+                        reject('error');
+                    },1000);
+                })
+            }
+            foo().then(function(data){
+                console.log(data)   //得到异步任务的正确结果
+            })
+            .catch(function(data){
+                console.log(data)   //获取异常信息
+            })
+            .finally(function(){
+                console.log('finished')
+            });                     //成功与否都会执行
+        </script>
+    </body>
+</html>

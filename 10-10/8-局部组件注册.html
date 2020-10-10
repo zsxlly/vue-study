@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <hello-vue></hello-vue>
+        <hello-react></hello-react>
+        <test-com></test-com>
+    </div>
+    <script>
+        // 局部组件只能在注册他的父组件中使用
+        Vue.component('test-com',{
+            template:'<div>Test<hello-vue></hello-vue></div>'//报错，不显示
+        });
+
+        //局部组件注册
+        var HelloVue = {
+            data() {
+                return {
+                    msg:'HelloVue'
+                }
+            },
+            template:'<div>{{msg}}</div>'
+        };
+        var HelloReact = {
+            data() {
+                return {
+                    msg:'HelloReact'
+                }
+            },
+            template:'<div>{{msg}}</div>'
+        };
+        var vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+           components:{
+                'hello-vue':HelloVue,
+                'hello-react':HelloReact
+            }
+        });
+    </script>
+</body>
+</html>

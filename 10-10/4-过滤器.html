@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{date | format('yyyy-MM-dd')}}</div> 
+        <!--这个例子 传递参数yyyy-MM-dd会到过滤器的arg参数进行判断 -->
+    </div>
+    <script>
+        Vue.filter('format', function(value,arg){
+            if(arg == 'yyyy-MM-dd'){   
+                var ret = '';
+                ret+= value.getFullYear() + '-' + (value.getMonth()+1) + '-' + value.getDate();
+                //getmonth()显示0-11，加1显示1-12
+                return ret;
+            }
+            return value;
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                date:new Date()
+            }
+        });
+    </script>
+</body>
+</html>

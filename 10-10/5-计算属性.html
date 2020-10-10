@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{reverseString}}</div>
+        <div>{{reverseString}}</div>
+        <div>{{reverseMessage()}}</div>
+        <div>{{reverseMessage()}}</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'hello'
+            },
+            //方法和计算属性的本质区别：是否缓存     方法不存在缓存
+            methods: {
+                reverseMessage:function(){
+                    console.log('methods');   //输出两次
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            //计算属性：计算属性基于它们的依赖（这里是msg）进行缓存的，
+            //依赖数据msg发生变换重新计算，否则用之前缓存的结果，所以这个例子只输出一次
+            computed: {
+                reverseString:function(){
+                    console.log('computed') //输出一次
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+        })
+    </script>
+</body>
+</html>

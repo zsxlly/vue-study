@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-color= 'msg'>   <!-- 指令带参数 -->
+    </div>
+
+    <script>
+        Vue.directive('color', {
+            bind:function(el,binding){
+             /*    console.log(binding.value)//blue
+                console.log(binding.value.color) //orange */
+                el.style.backgroundColor = binding.value.color
+            }
+        })
+
+        var vm =new Vue({
+            el:'#app',
+            data:{
+               // msg:'blue'
+               msg:{color:'orange'}     
+            },
+            methods: {
+                handle:function(){
+
+                }
+            },
+        })
+    </script>
+</body>
+</html>

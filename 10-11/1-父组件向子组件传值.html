@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{fmsg}}</div>
+        <menu-item title="来自父组件的值"></menu-item>          <!-- 静态绑定值 -->
+        <menu-item :title="ptitle" content='hello'></menu-item>   <!--  动态绑定属性 -->
+    </div>
+    <script>
+        Vue.component('menu-item',{
+            props:['title','content'],   //接受父组件的值
+            data() {
+                return {
+                    msg:'子组件本身的值'
+                }
+            },
+            template:'<div>{{msg+"----"+title+"----"+content}}</div>'
+        });
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                fmsg:'父组件内容',
+                ptitle:'动态绑定属性'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../vue.js"></script>
+<body>
+    <div id="app">
+        <prop :pstr='pstr' :pnum='10' :pbool='false' :parr='parr' :pobj='pobj'></prop>
+    </div>
+    <script>
+        Vue.component('prop', {
+            
+            props:['pstr','pnum','pbool','parr','pobj'],
+            template:`
+                <div>
+                <div>{{pstr}}</div>
+                <div>{{pnum}}</div>
+                <div>{{pbool}}</div>
+                <ul>
+                    <li :key='index' v-for='(item,index) in parr'>{{item}}</li>
+                </ul>
+                <div>
+                    <span>{{pobj.name}}</span></br>
+                    <span>{{pobj.age}}</span>
+                </div>
+               </div>
+                `
+        })
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                pstr:'hello',
+                parr:['阿宝','赖泽强'],
+                pobj:{
+                    name:'刘丽媛',
+                    age:12
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
